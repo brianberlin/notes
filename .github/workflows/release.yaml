@@ -12,9 +12,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Update
-        run: apt-get update
+        run: sudo apt-get update
       - name: Install ZSTD
-        run: apt-get install zstd
+        run: sudo apt-get install zstd
 
       - uses: actions/setup-elixir@v1
         with:
