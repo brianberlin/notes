@@ -8,17 +8,14 @@ env:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: elixir-latest
     steps:
       - uses: actions/checkout@v2
       - name: Update
         run: sudo apt-get update
       - name: Install ZSTD
         run: sudo apt-get install zstd
-
-      - uses: actions/setup-elixir@v1
-        with:
-          elixir-version: "1.11.4"
-          otp-version: "23.2.6"
-      - run: mix deps.get
+      - name: Mix Dependencies
+        run: mix deps.get
+      - name: Mix Release
       - run: mix release
