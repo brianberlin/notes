@@ -1,17 +1,13 @@
-name: Release
-on:
-  push:
-    branches: [ master ]
+on: push
+
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Elixir
-        uses: actions/setup-elixir@v1
+      - uses: actions/checkout@v2
+      - uses: actions/setup-elixir@v1
         with:
-          elixir-version: "1.11.4"
-          otp-version: "23.2.6"
-      - name: Build
-      - run: mix release
+          otp-version: '22.2'
+          elixir-version: '1.9.4'
+      - run: mix deps.get
+      - run: mix test
