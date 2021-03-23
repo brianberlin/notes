@@ -1,13 +1,17 @@
 defmodule Notes do
+  use Bakeware.Script
+
   def main([category, name]), do: open(category, name)
   def main([]), do: open_journal()
 
   def open(category, name) do
     open_vscode(note_path(category, name))
+    IO.puts("✓")
   end
 
   def open_journal() do
     open_vscode(note_path())
+    IO.puts("✓")
   end
 
   defp open_vscode(full_path) do
