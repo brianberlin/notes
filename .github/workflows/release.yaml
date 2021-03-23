@@ -18,4 +18,4 @@ jobs:
       - name: Mix Dependencies
         run: mix deps.get
       - name: Mix Release
-      - run: mix release
+        run: mix release
