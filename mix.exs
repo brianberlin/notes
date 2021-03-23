@@ -30,6 +30,7 @@ defmodule Notes.MixFile do
       overwrite: true,
       cookie: "#{@app}_cookie",
       quiet: true,
+      compression_level: 1,
       steps: [:assemble, &Bakeware.assemble/1],
       strip_beams: Mix.env() == :prod
     ]

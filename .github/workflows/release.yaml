@@ -2,11 +2,20 @@ name: Release
 on:
   push:
     branches: [ master ]
+
+env:
+  MIX_ENV: prod
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Update
+        run: apt-get update
+      - name: Install ZSTD
+        run: apt-get install zstd
+
       - uses: actions/setup-elixir@v1
         with:
           elixir-version: "1.11.4"
