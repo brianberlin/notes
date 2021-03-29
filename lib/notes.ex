@@ -30,23 +30,16 @@ defmodule Notes do
       |> Tuple.to_list()
       |> Enum.map(&pad_integer/1)
 
-    "Journal/#{year}/#{month}/#{day}.md"
+    Path.join(["Journal", year, month, day <> ".md"])
   end
 
   defp note_path(category, name) do
-    "#{title_case(category)}/#{title_case(name)}.md"
+    Path.join([category, name <> ".md"])
   end
 
   defp pad_integer(integer) when is_integer(integer) do
     integer
     |> Integer.to_string()
     |> String.pad_leading(2, "0")
-  end
-
-  defp title_case(string) when is_binary(string) do
-    string
-    |> String.split(" ")
-    |> Enum.map(&String.capitalize/1)
-    |> Enum.join(" ")
   end
 end
